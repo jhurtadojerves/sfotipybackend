@@ -10,12 +10,12 @@ class Migration(SchemaMigration):
     def forwards(self, orm):
         # Adding field 'Track.album'
         db.add_column(u'tracks_track', 'album',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=2, to=orm['albums.Album']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['albums.Album']),
                       keep_default=False)
 
         # Adding field 'Track.artist'
         db.add_column(u'tracks_track', 'artist',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=None, to=orm['artists.Artist']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['artists.Artist']),
                       keep_default=False)
 
 
@@ -38,7 +38,7 @@ class Migration(SchemaMigration):
         u'artists.artist': {
             'Meta': {'object_name': 'Artist'},
             'biography': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'firs_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'})
         },

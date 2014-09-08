@@ -11,4 +11,5 @@ class Track(models.Model):
 	artist = models.ForeignKey(Artist)
 
 
-
+	def __unicode__(self):
+		return self.title
