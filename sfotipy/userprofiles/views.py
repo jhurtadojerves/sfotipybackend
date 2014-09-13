@@ -10,12 +10,12 @@ def signup(request):
 
 	if form.is_valid():
 		user = form.save()
-		user_cache= authenticate(email=request.POST.get('email'), password= request.POST.get('password1'))
-		login(request, user_cache)
-		
+		# Las lineas de abajo recuperan el usuario de POST, lo autentican y loguean
+		# user_cache= authenticate(email=request.POST.get('email'), password= request.POST.get('password1'))
+		# login(request, user_cache)
+		#
 		#crear perfil de usuario
 		#rediccionar al home
-
 	return render(request, 'signup.html', {'form': form} )
 
 def signin(request):

@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -28,8 +27,22 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    # 'django.core.context_processors.request',
+    'sfotipy.context_processors.basico',
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+)
+
+#GRAPPELLI_ADMIN_TITLE = 'Administrador de Sfotipy'
 
 INSTALLED_APPS = (
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +54,8 @@ INSTALLED_APPS = (
     'albums',
     'artists',
     'userprofiles',
+    'mockups',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -50,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'sfotipy.middlewares.PaisMiddleware',
 )
 
 ROOT_URLCONF = 'sfotipy.urls'
@@ -70,7 +86,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -86,8 +102,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.sep.join(os.path.abspath(__file__).split(os.sep)[:-2] + ['media'])
+MEDIA_URL = '/media/'
+
+
 # Backends
 
-AUTHENTICATION_BACKENDS = (
-    'userprofiles.backends.EmailBackend',
-)
+# AUTHENTICATION_BACKENDS = (
+#     'userprofiles.backends.EmailBackend',
+# )
