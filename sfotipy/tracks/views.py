@@ -25,3 +25,10 @@ def track_view(request, title):
 	#return HttpResponse(json_data, content_type='application/json')
 
 	return render(request, 'track.html', {'track': track})
+
+from rest_framework import viewsets
+
+
+class TrackViewSet(viewsets.ModelViewSet):
+	model = Track
+	#serializer_class = TrackSerializers

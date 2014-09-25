@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
+    'django.contrib.staticfiles',
     'south',
     'tracks',
     'albums',
@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'userprofiles',
     'mockups',
     'django_extensions',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
