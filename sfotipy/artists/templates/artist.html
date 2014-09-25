@@ -1,1 +1,16 @@
-{{artist.first_name}}
+{%load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	{{fav_artist.first_name}}
+	<br />
+	{{fav_artist.biography}}
+	<br />
+	<img src="{% static "img.png" %}">
+</body>
+</html>
